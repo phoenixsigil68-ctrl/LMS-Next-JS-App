@@ -8,7 +8,7 @@ import React from "react";
 
 const page = () => {
   return (
-    <main className="px-6">
+    <main className="px-6 pb-7">
       <section className="px-2">
         <h1 className="text-3xl font-bold text-black">Dashboard</h1>
         <div className="items-center mt-10 p-0 flex flex-wrap gap-4 w-full max-md:justify-center justify-between">

@@ -1,7 +1,12 @@
+import { PricingTable } from "@clerk/nextjs";
 import React from "react";
 
 const page = () => {
-  return <div>Upgrade your plan</div>;
+  return (
+    <div>
+      <PricingTable />
+    </div>
+  );
 };
 
 export default page;

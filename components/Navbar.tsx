@@ -5,6 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
+import { useClerk, useUser, UserButton } from "@clerk/nextjs";
+import { Button } from "./ui/button";
 
 const Navbar = () => {
   const navItems = [
@@ -14,6 +16,9 @@ const Navbar = () => {
   ];
   const pathname = usePathname();
 
+  const { user } = useUser();
+  const { openSignIn } = useClerk();
+
   return (
     <div className="flex justify-between items-center px-8 py-4 changa-one-regular">
       <div>
@@ -21,7 +26,7 @@ const Navbar = () => {
           <Image src="/logo.png" alt="logo" width={70} height={50} />
         </Link>
       </div>
-      <div className="flex justify-center items-center gap-6 text-2xl">
+      <div className="flex justify-center items-center gap-6 text-2xl max-sm:gap-2">
         {navItems.map((item) => (
           <Link
             key={crypto.randomUUID()}
@@ -31,6 +36,7 @@ const Navbar = () => {
             {item.label}
           </Link>
         ))}
+        {!user ? <Button onClick={openSignIn}>Login</Button> : <UserButton />}
       </div>
     </div>
   );

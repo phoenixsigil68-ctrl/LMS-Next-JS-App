@@ -140,3 +140,12 @@
   grid-template-rows: auto;
   column-gap: 30px;
 }
+
+@media (max-width: 768px) {
+  .grid-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    row-gap: 30px;
+  }
+}
