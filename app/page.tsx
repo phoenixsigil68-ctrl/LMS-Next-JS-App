@@ -1,7 +1,9 @@
 "use client";
 
 import CompanionCard from "@/components/CompanionCard";
+import CustomCompanion from "@/components/CustomCompanion";
 import Navbar from "@/components/Navbar";
+import RecentCompanion from "@/components/RecentCompanion";
 import React from "react";
 
 const page = () => {
@@ -36,7 +38,15 @@ const page = () => {
           />
         </div>
       </section>
-      <section className=""></section>
+      <section className="mt-15 grid-container">
+        <div className="w-full border border-black rounded-4xl px-7 py-6">
+          <h1 className="stack-sans-text text-3xl font-bold ">
+            Recently Completed Lessons
+          </h1>
+          <RecentCompanion />
+        </div>
+        <CustomCompanion />
+      </section>
     </main>
   );
 };

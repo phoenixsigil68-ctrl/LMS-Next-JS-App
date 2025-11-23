@@ -136,10 +136,7 @@
 
 .grid-container {
   display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: ;
-  grid-template-areas:
-    "box-1"
-    "box-2"
-    "box-3";
+  grid-template-columns: 65% 1fr;
+  grid-template-rows: auto;
+  column-gap: 30px;
 }
