@@ -141,6 +141,15 @@
   column-gap: 30px;
 }
 
+.grid-layout {
+  display: grid;
+  grid-auto-flow: row;
+  grid-auto-rows: 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-items: center;
+  row-gap: 40px;
+}
+
 @media (max-width: 768px) {
   .grid-container {
     display: grid;

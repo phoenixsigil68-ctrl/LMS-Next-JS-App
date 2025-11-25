@@ -36,7 +36,13 @@ const Navbar = () => {
             {item.label}
           </Link>
         ))}
-        {!user ? <Button onClick={openSignIn}>Login</Button> : <UserButton />}
+        {!user ? (
+          <Link href={"/sign-in"}>
+            <Button>Login</Button>
+          </Link>
+        ) : (
+          <UserButton />
+        )}
       </div>
     </div>
   );
