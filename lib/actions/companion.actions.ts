@@ -25,5 +25,25 @@ export const getAllCompanions = async () => {
 
   const { data, error } = await supabase.from("companions").select();
 
+  if (error) {
+    alert("Error happened while fetching the companion");
+    console.log(error.message);
+  }
+  return data;
+};
+
+export const getCompanion = async (id: string) => {
+  const { userId } = await auth();
+  const supabase = createSupabaseClient();
+
+  const { data, error } = await supabase
+    .from("companions")
+    .select()
+    .eq("id", id);
+
+  if (error) {
+    console.log(error.message);
+  }
+
   return data;
 };

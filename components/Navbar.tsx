@@ -20,13 +20,13 @@ const Navbar = () => {
   const { openSignIn } = useClerk();
 
   return (
-    <div className="flex justify-between items-center px-8 py-4 changa-one-regular">
-      <div>
+    <div className="flex justify-between items-center px-8 py-4 changa-one-regular max-sm:justify-center">
+      <div className="max-sm:hidden">
         <Link href={"/"}>
           <Image src="/logo.png" alt="logo" width={70} height={50} />
         </Link>
       </div>
-      <div className="flex justify-center items-center gap-6 text-2xl max-sm:gap-2">
+      <div className="flex justify-center items-center gap-6 text-2xl max-sm:gap-2 max-sm:justify-between">
         {navItems.map((item) => (
           <Link
             key={crypto.randomUUID()}

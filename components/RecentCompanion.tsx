@@ -28,7 +28,7 @@ const RecentCompanion = () => {
       topic: "Neural Networks of the Brain",
       subject: "Science",
       duration: 45,
-      img: "/science.png",
+      img: "/images/science.png",
       color: "#E5D0FF",
     },
     {
@@ -36,7 +36,7 @@ const RecentCompanion = () => {
       topic: "Solving Linear Equations",
       subject: "Maths",
       duration: 20,
-      img: "/math.png",
+      img: "/images/maths.png",
       color: "#FFDA6E",
     },
     {
@@ -44,7 +44,7 @@ const RecentCompanion = () => {
       topic: "Mastering Tenses in English",
       subject: "Language",
       duration: 32,
-      img: "/chat.png",
+      img: "/images/language.png",
       color: "#BDE7FF",
     },
     {
@@ -52,7 +52,7 @@ const RecentCompanion = () => {
       topic: "Intro to If-Else Statements",
       subject: "Coding",
       duration: 30,
-      img: "/coding.png",
+      img: "/images/coding.png",
       color: "#FFC8E4",
     },
     {
@@ -60,7 +60,7 @@ const RecentCompanion = () => {
       topic: "World Wars: Causes & Effects",
       subject: "History",
       duration: 15,
-      img: "/map.png",
+      img: "/images/history.png",
       color: "#FFECC8",
     },
   ];
@@ -69,21 +69,23 @@ const RecentCompanion = () => {
     <Table>
       <TableHeader>
         <TableRow>
-          <TableHead className="w-auto">Lesson</TableHead>
+          <TableHead className="w-auto max-sm:hidden">Lesson</TableHead>
           <TableHead>Subject</TableHead>
-          <TableHead>Duration</TableHead>
+          <TableHead className="max-sm:hidden">Duration</TableHead>
         </TableRow>
       </TableHeader>
-      <TableBody>
+      <TableBody className="max-sm:w-fit">
         {detailsCompanions.map((item) => (
           <TableRow key={crypto.randomUUID()}>
             <TableCell className="font-medium flex justify-start items-center gap-4">
-              <div
-                className="p-4 rounded-lg"
-                style={{ backgroundColor: item.color }}
-              >
-                <Image src={item.img} alt="img" width={30} height={30} />
-              </div>
+              <Image
+                src={item.img}
+                className="max-sm:hidden"
+                alt="img"
+                width={50}
+                height={50}
+              />
+
               <div className="flex flex-col justify-center items-start gap-2">
                 <p className="stack-sans-text text-2xl">{item.name}</p>
                 <p className="stack-sans-text text-gray-700 text-md">
@@ -94,7 +96,7 @@ const RecentCompanion = () => {
             <TableCell>
               <Button className="rounded-full">{item.subject}</Button>
             </TableCell>
-            <TableCell className="text-xl stack-sans-text">
+            <TableCell className="text-xl max-sm:hidden stack-sans-text">
               {item.duration} mins
             </TableCell>
           </TableRow>

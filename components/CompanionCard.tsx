@@ -1,6 +1,10 @@
+"use client";
+
 import { cn } from "@/lib/utils";
 import { Button } from "./ui/button";
 import { Bookmark, Clock9 } from "lucide-react";
+import Link from "next/link";
+import { redirect } from "next/navigation";
 
 interface CompanionCardProps {
   id: string;
@@ -36,7 +40,11 @@ const CompanionCard = ({
         <Clock9 width={18} />
         <p>{duration} mins duration</p>
       </div>
-      <Button className="bg-[#FE5933] hover:bg-[#fc7050] cursor-pointer">
+      <Button
+        value={id}
+        className="bg-[#FE5933] hover:bg-[#fc7050] cursor-pointer"
+        onClick={(e: any) => redirect(`companions/${e.target.value}`)}
+      >
         Launch Session
       </Button>
     </div>

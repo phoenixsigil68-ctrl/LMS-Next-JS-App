@@ -10,8 +10,10 @@ const page = () => {
   return (
     <main className="px-6 pb-7">
       <section className="px-2">
-        <h1 className="text-3xl font-bold text-black">Dashboard</h1>
-        <div className="items-center mt-10 p-0 flex flex-wrap gap-4 w-full max-md:justify-center justify-between">
+        <h1 className="text-3xl font-bold text-black max-sm:text-center">
+          Dashboard
+        </h1>
+        <div className="items-center mt-10 p-0 grid max-lg:grid-cols-2 max-md:grid-cols-1 grid-cols-3 grid-rows-1 gap-4 w-full max-md:justify-center justify-between max-sm:grid-cols-1">
           <CompanionCard
             id="1"
             subject="Science"

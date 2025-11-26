@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const CustomCompanion = () => {
   return (
-    <div className="flex h-100 flex-col items-center justify-center p-5 bg-[#2C2C2C] rounded-4xl gap-4">
+    <div className="flex h-100 flex-col items-center justify-center p-5 bg-[#2C2C2C] rounded-4xl gap-4 max-sm:max-w-fit">
       <div className="flex flex-col justify-evenly items-center gap-4">
         <Button className="stack-sans-text rounded-md hover:bg-[#fcd256] bg-[#FCCC41] text-black">
           Start Learning Your way
