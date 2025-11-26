@@ -2,6 +2,7 @@
 
 import { createSupabaseClient } from "@/supabase-client";
 import { auth } from "@clerk/nextjs/server";
+import { revalidatePath } from "next/cache";
 
 export default async function createCompanion(formdata: any) {
   const { userId: author } = await auth();
@@ -46,4 +47,13 @@ export const getCompanion = async (id: string) => {
   }
 
   return data;
+};
+
+export const deleteCompanion = async (id: string) => {
+  const { userId } = await auth();
+  const supabase = createSupabaseClient();
+  await supabase.from("companions").delete().eq("id", id);
+  revalidatePath("/companions");
+
+  console.log("Successfully deleted the companion");
 };

@@ -5,6 +5,11 @@ import { Button } from "./ui/button";
 import { Bookmark, Clock9 } from "lucide-react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import {
+  deleteCompanion,
+  getAllCompanions,
+} from "@/lib/actions/companion.actions";
+import { useEffect } from "react";
 
 interface CompanionCardProps {
   id: string;
@@ -30,9 +35,17 @@ const CompanionCard = ({
     >
       <div className="flex justify-between items-center">
         <Button>{subject}</Button>
-        <Button>
-          <Bookmark />
-        </Button>
+        <div className="flex justify-center items-center gap-5 ">
+          <Button
+            onClick={() => deleteCompanion(id)}
+            className="bg-[#ff0800] hover:bg-[#f82720] cursor-pointer"
+          >
+            Delete
+          </Button>
+          <Button>
+            <Bookmark />
+          </Button>
+        </div>
       </div>
       <p className="stack-sans-text font-bold text-left text-2xl ">{name}</p>
       <p className="stack-sans-text text-[#111111;]">Topic: {topic}</p>

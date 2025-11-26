@@ -22,8 +22,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import createCompanion from "@/lib/actions/companion.actions";
+import createCompanion, {
+  getAllCompanions,
+  getCompanion,
+} from "@/lib/actions/companion.actions";
 import { redirect } from "next/navigation";
+import { useEffect } from "react";
 
 const formSchema = z.object({
   name: z.string().min(2, {
