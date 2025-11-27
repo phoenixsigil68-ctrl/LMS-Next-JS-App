@@ -5,6 +5,7 @@ import { Bookmark, Clock9 } from "lucide-react";
 import { redirect } from "next/navigation";
 import AnimatedContent from "./AnimatedContent";
 import { deleteCompanion } from "@/lib/actions/companion.actions";
+import { getSubjectColor } from "@/lib/utils";
 
 interface CompanionCardProps {
   id: string;
@@ -37,7 +38,7 @@ const CompanionCard = ({
     >
       <div
         className={` flex flex-col rounded-4xl border border-black px-4 py-4 gap-5 w-full lg:max-w-[410px] justify-between;`}
-        style={{ backgroundColor: color }}
+        style={{ backgroundColor: getSubjectColor(subject) }}
       >
         <div className="flex justify-between items-center">
           <Button>{subject}</Button>

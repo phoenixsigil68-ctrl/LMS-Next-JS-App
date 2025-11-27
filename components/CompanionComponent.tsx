@@ -3,8 +3,10 @@
 import { Button } from "@/components/ui/button";
 import { configureAssistant } from "@/lib/utils";
 import { vapi } from "@/vapi.sdk";
+import Lottie from "lottie-react";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import soundwaves from "@/constants/soundwaves.json";
 
 const CompanionComponent = ({
   companionId,
@@ -26,6 +28,8 @@ const CompanionComponent = ({
 
   const [callStatus, setCallstatus] = useState<CallStatus>(CallStatus.INACTIVE);
   const [isSpeaking, setIsSpeaking] = useState(false);
+  const [messages, setMessages] = useState([]);
+  const lottieRef: any = useRef(null);
 
   useEffect(() => {
     const onCallStart = () => setCallstatus(CallStatus.ACTIVE);
@@ -54,6 +58,16 @@ const CompanionComponent = ({
       vapi.off("speech-end", onSpeechEnd);
     };
   }, []);
+
+  useEffect(() => {
+    if (lottieRef) {
+      if (isSpeaking) {
+        lottieRef.current?.play();
+      } else {
+        lottieRef.current?.stop();
+      }
+    }
+  });
 
   const handleCall = async () => {
     setCallstatus(CallStatus.ACTIVE);
@@ -101,19 +115,33 @@ const CompanionComponent = ({
         style={{ gridArea: "box-2" }}
         className="w-full flex flex-col justify-center max-sm:items-center items-center border-4 border-black transition-all duration-300 hover:border-[#f35933] rounded-2xl"
       >
-        <Image
-          src={`/images/${subject}.png`}
-          alt="subject image"
-          width={100}
-          height={100}
-        />
+        {callStatus === CallStatus.ACTIVE ? (
+          <div className="opacity-100 transition-opacity duration-700">
+            <Lottie
+              animationData={soundwaves}
+              autoPlay={false}
+              lottieRef={lottieRef}
+              className="size-[300px] max-sm:size-[100px]"
+            />
+          </div>
+        ) : (
+          <div className="opacity-100 transition-opacity duration-700">
+            <Image
+              src={`/images/${subject}.png`}
+              alt="subject image"
+              width={100}
+              height={100}
+            />
+          </div>
+        )}
+
         <h1 className="text-4xl mt-4  max-sm:text-3xl">{name}</h1>
       </div>
-      <div style={{ gridArea: "box-3" }} className="grid-for-user-voice">
-        <div
-          style={{ gridArea: "userProfile" }}
-          className="flex flex-col gap-5 border-2 border-black rounded-2xl w-full h-full justify-center items-center"
-        >
+      <div
+        style={{ gridArea: "box-3" }}
+        className="grid grid-cols-1 grid-rows-2 gap-y-10 h-full"
+      >
+        <div className="flex flex-col h-full gap-5 border-2 border-black rounded-2xl w-full justify-center items-center max-lg:py-10">
           <Image
             src={image}
             alt="profile"
@@ -123,27 +151,15 @@ const CompanionComponent = ({
           />
           <h1 className="text-4xl font-bold">{username}</h1>
         </div>
-        <Button
-          style={{ gridArea: "mic" }}
-          className="flex justify-center items-center border-2 border-black rounded-2xl w-full h-full bg-transparent hover:bg-gray-100 "
-        >
-          <Image src={"/images/mic.png"} alt="mic" width={40} height={40} />
-        </Button>
-        <Button
-          style={{ gridArea: "repeat" }}
-          className="flex justify-center items-center border-2 border-black rounded-2xl w-full h-full bg-transparent hover:bg-gray-100"
-        >
-          <Image
-            src={"/images/repeat.png"}
-            alt="repeat"
-            width={40}
-            height={40}
-          />
-        </Button>
-        <div style={{ gridArea: "endSession" }} className="w-full">
+        <div className="w-full">
           <Button
-            className="w-full text-2xl py-7 bg-[#f35933] hover:bg-[#f54a20]
-          hover:cursor-pointer"
+            className={`w-full text-2xl py-7
+          hover:cursor-pointer ${
+            callStatus === CallStatus.INACTIVE ||
+            callStatus === CallStatus.FINISHED
+              ? ""
+              : " bg-[#f35933] hover:bg-[#f54a20]"
+          }`}
             onClick={
               callStatus === CallStatus.INACTIVE ? handleCall : handleDisconnect
             }
