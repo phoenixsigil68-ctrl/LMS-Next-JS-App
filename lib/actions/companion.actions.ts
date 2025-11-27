@@ -1,7 +1,7 @@
 "use server";
 
 import { createSupabaseClient } from "@/supabase-client";
-import { auth } from "@clerk/nextjs/server";
+import { auth, currentUser } from "@clerk/nextjs/server";
 import { revalidatePath } from "next/cache";
 
 export default async function createCompanion(formdata: any) {
@@ -11,7 +11,8 @@ export default async function createCompanion(formdata: any) {
   const { data, error } = await supabase
     .from("companions")
     .insert({ ...formdata, author })
-    .select();
+    .select()
+    .single();
 
   if (error) {
     throw new Error(error.message);
@@ -24,7 +25,10 @@ export const getAllCompanions = async () => {
   const { userId } = await auth();
   const supabase = createSupabaseClient();
 
-  const { data, error } = await supabase.from("companions").select();
+  const { data, error } = await supabase
+    .from("companions")
+    .select("*")
+    .eq("author", userId);
 
   if (error) {
     alert("Error happened while fetching the companion");

@@ -20,7 +20,7 @@ const Navbar = () => {
   const { openSignIn } = useClerk();
 
   return (
-    <div className="flex justify-between items-center px-8 py-4 changa-one-regular max-sm:justify-center">
+    <div className="flex justify-between items-center border-b border-gray-400 px-8 py-4 changa-one-regular max-sm:justify-center">
       <div className="max-sm:hidden">
         <Link href={"/"}>
           <Image src="/logo.png" alt="logo" width={70} height={50} />
