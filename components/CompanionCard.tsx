@@ -6,6 +6,7 @@ import { redirect } from "next/navigation";
 import AnimatedContent from "./AnimatedContent";
 import { deleteCompanion } from "@/lib/actions/companion.actions";
 import { getSubjectColor } from "@/lib/utils";
+import FadeContent from "./FadeContent";
 
 interface CompanionCardProps {
   id: string;
@@ -25,16 +26,11 @@ const CompanionCard = ({
   name,
 }: CompanionCardProps) => {
   return (
-    <AnimatedContent
-      distance={150}
-      direction="horizontal"
-      reverse={false}
-      duration={1.2}
-      ease="power3.out"
-      initialOpacity={0.2}
-      scale={1.1}
-      threshold={0.2}
-      delay={0.1}
+    <FadeContent
+      blur={false}
+      duration={700}
+      easing="ease-out"
+      initialOpacity={0}
     >
       <div
         className={` flex flex-col rounded-4xl border border-black px-4 py-4 gap-5 w-full lg:max-w-[410px] justify-between;`}
@@ -68,7 +64,7 @@ const CompanionCard = ({
           Launch Session
         </Button>
       </div>
-    </AnimatedContent>
+    </FadeContent>
   );
 };
 
