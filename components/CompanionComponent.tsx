@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { configureAssistant } from "@/lib/utils";
 import { vapi } from "@/vapi.sdk";
 import Image from "next/image";
 import { useEffect, useState } from "react";
@@ -54,6 +55,22 @@ const CompanionComponent = ({
     };
   }, []);
 
+  const handleCall = async () => {
+    setCallstatus(CallStatus.ACTIVE);
+
+    const assistantOverrides = {
+      variableValues: { subject, topic, style },
+      clientMessages: ["transcript"],
+      serverMessages: [],
+    };
+    //@ts-expect-error
+    vapi.start(configureAssistant(voice, style), assistantOverrides);
+  };
+
+  const handleDisconnect = async () => {
+    setCallstatus(CallStatus.FINISHED);
+    vapi.stop();
+  };
   return (
     <div className="w-full px-10 h-full min-sm:grid-mobile-layout grid-for-voice stack-sans-text">
       <div
@@ -127,8 +144,11 @@ const CompanionComponent = ({
           <Button
             className="w-full text-2xl py-7 bg-[#f35933] hover:bg-[#f54a20]
           hover:cursor-pointer"
+            onClick={
+              callStatus === CallStatus.INACTIVE ? handleCall : handleDisconnect
+            }
           >
-            End Session
+            {callStatus === CallStatus.ACTIVE ? "End Session" : "Start Session"}
           </Button>
         </div>
       </div>

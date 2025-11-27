@@ -177,9 +177,8 @@ export default function ProfileForm() {
                         <SelectValue placeholder="Select style" />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="#E5D0FF">Purple</SelectItem>
-                        <SelectItem value="#FFDA6E">Yellow</SelectItem>
-                        <SelectItem value="#BDE7FF">Blue</SelectItem>
+                        <SelectItem value="formal">Formal</SelectItem>
+                        <SelectItem value="casual">Casual</SelectItem>
                       </SelectContent>
                     </Select>
                   </FormControl>
