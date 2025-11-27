@@ -1,12 +1,13 @@
-"use client";
-
 import CompanionCard from "@/components/CompanionCard";
 import CustomCompanion from "@/components/CustomCompanion";
 import Navbar from "@/components/Navbar";
 import RecentCompanion from "@/components/RecentCompanion";
+import { getAllCompanions } from "@/lib/actions/companion.actions";
 import React from "react";
 
-const page = () => {
+const page = async () => {
+  const companions: any = await getAllCompanions();
+
   return (
     <main className="px-6 pb-7">
       <section className="px-2">
@@ -14,33 +15,20 @@ const page = () => {
           Dashboard
         </h1>
         <div className="items-center mt-10 p-0 grid max-lg:grid-cols-2 max-md:grid-cols-1 grid-cols-3 grid-rows-1 gap-4 w-full max-md:justify-center justify-between max-sm:grid-cols-1">
-          <CompanionCard
-            id="1"
-            subject="Science"
-            name="Neura the Brainy Explorer"
-            topic="Neural Network of the Brain"
-            duration={45}
-            color="#E5D0FF"
-          />
-          <CompanionCard
-            id="2"
-            subject="Maths"
-            name="Counsty the Number Wizard"
-            topic="Derivatives and Integrals"
-            duration={30}
-            color="#FFDA6E"
-          />
-          <CompanionCard
-            id="3"
-            subject="Language"
-            name="Verba the Vocabulary Builder"
-            topic="English Literature"
-            duration={30}
-            color="#BDE7FF"
-          />
+          {companions.map((item: any) => (
+            <CompanionCard
+              key={item.id}
+              id={item.id}
+              subject={item.subject}
+              name={item.name}
+              topic={item.topic}
+              duration={item.duration}
+              color={item.style}
+            />
+          ))}
         </div>
       </section>
-      <section className="mt-15 grid-container">
+      <section className="mt-15 grid grid-cols-[65%_1fr] gap-x-10 grid-rows-1 max-lg:grid-cols-1 max-lg:grid-rows-2 max-md:grid-cols-1 max-md:grid-rows-2 max-sm:grid-cols-1 gap-y-10 max-sm:grid-rows-2">
         <div className="w-full border border-black rounded-4xl px-7 py-6">
           <h1 className="stack-sans-text text-3xl font-bold ">
             Recently Completed Lessons

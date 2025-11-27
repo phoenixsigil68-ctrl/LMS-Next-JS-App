@@ -1,8 +1,9 @@
 import type { NextConfig } from "next";
+import { hostname } from "os";
 
 const nextConfig: NextConfig = {
   images: {
-    domains: ["img.clerk.com"],
+    remotePatterns: [{ hostname: "img.clerk.com" }],
   },
 };
 

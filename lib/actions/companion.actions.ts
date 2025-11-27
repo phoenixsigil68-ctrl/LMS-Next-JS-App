@@ -54,6 +54,7 @@ export const deleteCompanion = async (id: string) => {
   const supabase = createSupabaseClient();
   await supabase.from("companions").delete().eq("id", id);
   revalidatePath("/companions");
+  revalidatePath("/");
 
   console.log("Successfully deleted the companion");
 };

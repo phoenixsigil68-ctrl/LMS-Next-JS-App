@@ -70,7 +70,9 @@ const RecentCompanion = () => {
       <TableHeader>
         <TableRow>
           <TableHead className="w-auto max-sm:hidden">Lesson</TableHead>
-          <TableHead>Subject</TableHead>
+          <TableHead className="max-sm:text-center max-sm:text-2xl stack-sans-text">
+            Subject
+          </TableHead>
           <TableHead className="max-sm:hidden">Duration</TableHead>
         </TableRow>
       </TableHeader>
@@ -93,7 +95,7 @@ const RecentCompanion = () => {
                 </p>
               </div>
             </TableCell>
-            <TableCell>
+            <TableCell className="max-sm:hidden">
               <Button className="rounded-full">{item.subject}</Button>
             </TableCell>
             <TableCell className="text-xl max-sm:hidden stack-sans-text">

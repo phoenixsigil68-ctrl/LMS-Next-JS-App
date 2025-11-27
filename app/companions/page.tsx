@@ -10,7 +10,9 @@ const page = async () => {
       <div className="text-3xl text-center underline stack-sans-text">
         The Companions page
       </div>
-      <div className="grid grid-cols-3 auto-rows-fr max-md:grid-cols-2 gap-5 max-lg:grid-cols-2 px-5 max-sm:grid-cols-1 mt-10">
+      <div
+        className={`grid grid-cols-3 auto-rows-fr max-md:grid-cols-2 gap-5 max-lg:grid-cols-2 px-5 max-sm:grid-cols-1 mt-10`}
+      >
         {companions.map((item: any) => (
           <CompanionCard
             key={item.id}
@@ -18,7 +20,7 @@ const page = async () => {
             subject={item.subject}
             duration={item.duration}
             name={item.name}
-            color={item.color}
+            color={item.style}
             topic={item.topic}
           />
         ))}
