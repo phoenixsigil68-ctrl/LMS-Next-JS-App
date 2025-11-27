@@ -1,5 +1,6 @@
 import MyJourney from "@/components/MyJourney";
-import { currentUser } from "@clerk/nextjs/server";
+import { auth, currentUser } from "@clerk/nextjs/server";
+import { redirect } from "next/navigation";
 
 const page = async () => {
   const user: any = await currentUser();
@@ -7,6 +8,11 @@ const page = async () => {
   const fullName: any = user?.firstName;
   const email: any = user?.emailAddresses[0].emailAddress;
   console.log(email);
+  const { userId } = await auth();
+
+  if (!userId) {
+    redirect("/sign-in");
+  }
 
   return (
     <main>
