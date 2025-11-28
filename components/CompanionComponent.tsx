@@ -7,6 +7,7 @@ import Lottie from "lottie-react";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import soundwaves from "@/constants/soundwaves.json";
+import { addCompletedSessions } from "@/lib/actions/companion.actions";
 
 const CompanionComponent = ({
   companionId,
@@ -34,7 +35,10 @@ const CompanionComponent = ({
   useEffect(() => {
     const onCallStart = () => setCallstatus(CallStatus.ACTIVE);
 
-    const onCallEnd = () => setCallstatus(CallStatus.FINISHED);
+    const onCallEnd = () => {
+      setCallstatus(CallStatus.FINISHED);
+      addCompletedSessions(companionId);
+    };
     const onMessage = () => {};
     const onError = (error: Error) => {
       console.log(error);

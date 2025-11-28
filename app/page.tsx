@@ -2,16 +2,20 @@ import CompanionCard from "@/components/CompanionCard";
 import CustomCompanion from "@/components/CustomCompanion";
 import Navbar from "@/components/Navbar";
 import RecentCompanion from "@/components/RecentCompanion";
-import { getAllCompanions } from "@/lib/actions/companion.actions";
+import {
+  getAllCompanions,
+  getRecentSessions,
+} from "@/lib/actions/companion.actions";
 import React from "react";
 
 const page = async () => {
-  const companions: any = await getAllCompanions();
+  const companions: any = await getAllCompanions(3);
+  const recentSessions: any = await getRecentSessions(Infinity);
 
   return (
     <main className="px-6 pb-7">
       <section className="px-2">
-        <h1 className="text-3xl font-bold text-black max-sm:text-center">
+        <h1 className="text-3xl underline font-bold text-black max-sm:text-center">
           Dashboard
         </h1>
         <div
@@ -45,7 +49,7 @@ const page = async () => {
           <h1 className="stack-sans-text text-3xl font-bold ">
             Recently Completed Lessons
           </h1>
-          <RecentCompanion />
+          <RecentCompanion recentSessions={recentSessions} />
         </div>
         <CustomCompanion />
       </section>

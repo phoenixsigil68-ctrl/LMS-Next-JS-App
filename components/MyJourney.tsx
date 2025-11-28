@@ -1,10 +1,13 @@
 import { currentUser } from "@clerk/nextjs/server";
 import Image from "next/image";
+import { getSessionHistory } from "@/lib/actions/companion.actions";
 
-const MyJourney = async ({ profile, name, email }: any) => {
+const MyJourney = async ({ profile, name, email, companionsCreated }: any) => {
+  const sessionHistory = await getSessionHistory();
+
   return (
-    <div className="grid grid-cols-1 grid-rows-2 gap-y-10">
-      <div className="w-full flex justify-between h-full items-center px-10 max-lg:justify-center">
+    <div className="grid grid-cols-1 grid-rows-1 gap-y-10">
+      <div className="w-full flex justify-between h-full items-center max-lg:justify-center">
         <div className="flex justify-center items-center gap-5 px-8 py-5 max-lg:hidden ">
           <Image
             src={profile}
@@ -20,20 +23,23 @@ const MyJourney = async ({ profile, name, email }: any) => {
         </div>
         <div className="flex justify-center items-center gap-5 max-lg:justify-between max-lg:w-full max-sm:flex-col ">
           <div className="flex flex-col justify-center items-center border p-5 h-full border-black rounded-2xl">
-            <p className="text-2xl font-bold stack-sans-text">10</p>
+            <p className="text-2xl font-bold stack-sans-text">
+              {sessionHistory.length}
+            </p>
             <p className="text-2xl font-bold stack-sans-text">
               Lessons Completed
             </p>
           </div>
           <div className="flex flex-col justify-center items-center border p-5 h-full border-black rounded-2xl">
-            <p className="text-2xl font-bold stack-sans-text">15</p>
+            <p className="text-2xl font-bold stack-sans-text">
+              {companionsCreated}
+            </p>
             <p className="text-2xl font-bold stack-sans-text">
               Companions Created
             </p>
           </div>
         </div>
       </div>
-      <div></div>
     </div>
   );
 };

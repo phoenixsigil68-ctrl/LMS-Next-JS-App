@@ -31,7 +31,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="flex justify-between items-center border-b border-gray-400 px-8 py-4 changa-one-regular  max-sm:px-0 ">
+    <div className="flex justify-between items-center border-b border-gray-400 px-8 py-4 changa-one-regular  max-sm:px-0 mb-10">
       <div className="max-sm:hidden">
         <Link href={"/"}>
           <Image src="/logo.png" alt="logo" width={70} height={50} />

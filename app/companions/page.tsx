@@ -3,7 +3,7 @@ import React from "react";
 import CompanionCard from "@/components/CompanionCard";
 
 const page = async () => {
-  const companions: any = await getAllCompanions();
+  const companions: any = await getAllCompanions(Infinity);
 
   return (
     <>

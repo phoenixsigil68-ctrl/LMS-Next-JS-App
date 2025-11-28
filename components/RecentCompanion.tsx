@@ -13,7 +13,7 @@ import {
 import Image from "next/image";
 import { Button } from "./ui/button";
 
-const RecentCompanion = () => {
+const RecentCompanion = ({ recentSessions }: any) => {
   interface intfc {
     name: string;
     topic: string;
@@ -21,49 +21,6 @@ const RecentCompanion = () => {
     duration: number;
     img: string;
   }
-
-  const detailsCompanions = [
-    {
-      name: "Neura the Brainy Explorer",
-      topic: "Neural Networks of the Brain",
-      subject: "Science",
-      duration: 45,
-      img: "/images/science.png",
-      color: "#E5D0FF",
-    },
-    {
-      name: "Algebrin, the Eq Queen",
-      topic: "Solving Linear Equations",
-      subject: "Maths",
-      duration: 20,
-      img: "/images/maths.png",
-      color: "#FFDA6E",
-    },
-    {
-      name: "Luna, Your Grammar Guide",
-      topic: "Mastering Tenses in English",
-      subject: "Language",
-      duration: 32,
-      img: "/images/language.png",
-      color: "#BDE7FF",
-    },
-    {
-      name: "Codey, the Logic Hacker",
-      topic: "Intro to If-Else Statements",
-      subject: "Coding",
-      duration: 30,
-      img: "/images/coding.png",
-      color: "#FFC8E4",
-    },
-    {
-      name: "Memo, the Memory Keeper",
-      topic: "World Wars: Causes & Effects",
-      subject: "History",
-      duration: 15,
-      img: "/images/history.png",
-      color: "#FFECC8",
-    },
-  ];
 
   return (
     <Table>
@@ -77,11 +34,11 @@ const RecentCompanion = () => {
         </TableRow>
       </TableHeader>
       <TableBody className="max-sm:w-fit">
-        {detailsCompanions.map((item) => (
+        {recentSessions.map((item: any) => (
           <TableRow key={crypto.randomUUID()}>
             <TableCell className="font-medium flex justify-start items-center gap-4">
               <Image
-                src={item.img}
+                src={`/images/${item.subject}.png`}
                 className="max-sm:hidden"
                 alt="img"
                 width={50}

@@ -45,9 +45,6 @@ const CompanionCard = ({
             >
               Delete
             </Button>
-            <Button>
-              <Bookmark />
-            </Button>
           </div>
         </div>
         <p className="stack-sans-text font-bold text-left text-2xl ">{name}</p>
