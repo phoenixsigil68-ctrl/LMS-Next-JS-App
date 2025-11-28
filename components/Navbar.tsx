@@ -58,7 +58,7 @@ const Navbar = () => {
         <div
           className={`${
             menu ? "flex opacity-100 " : "hidden opacity-0 "
-          } flex-col  absolute bg-red-300 rounded-2xl w-50 h-40 top-15 justify-center items-start px-5 gap-y-3 transition-all duration-500`}
+          } flex-col  absolute bg-gray-100 rounded-2xl w-50 h-40 top-15 justify-center items-start px-5 gap-y-3 transition-all duration-500`}
         >
           {navItems.map((item) => (
             <Link
