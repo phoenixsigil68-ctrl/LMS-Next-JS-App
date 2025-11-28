@@ -4,7 +4,6 @@ import CompanionCard from "@/components/CompanionCard";
 
 const page = async () => {
   const companions: any = await getAllCompanions(Infinity);
-
   return (
     <>
       <div className="text-3xl text-center underline stack-sans-text">
