@@ -86,7 +86,7 @@ export default function ProfileForm() {
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
-            className="space-y-8 w-1/3"
+            className="space-y-8 max-sm:w-full max-md:w-full max-lg:w-full max-sm:px-6 max-lg:px-8 max-md:px-7 w-1/3"
           >
             <FormField
               control={form.control}
@@ -106,7 +106,7 @@ export default function ProfileForm() {
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
-            className="space-y-8 w-1/3"
+            className="space-y-8 max-sm:w-full max-md:w-full max-lg:w-full max-sm:px-6 max-lg:px-8 max-md:px-7 w-1/3"
           >
             <FormField
               control={form.control}
@@ -138,7 +138,7 @@ export default function ProfileForm() {
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
-            className="space-y-8 w-1/3"
+            className="space-y-8 max-sm:w-full max-md:w-full max-lg:w-full max-sm:px-6 max-lg:px-8 max-md:px-7 w-1/3"
           >
             <FormField
               control={form.control}
@@ -163,7 +163,7 @@ export default function ProfileForm() {
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
-            className="space-y-8 w-1/3"
+            className="space-y-8 max-sm:w-full max-md:w-full max-lg:w-full max-sm:px-6 max-lg:px-8 max-md:px-7 w-1/3"
           >
             <FormField
               control={form.control}
@@ -192,7 +192,7 @@ export default function ProfileForm() {
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
-            className="space-y-8 w-1/3"
+            className="space-y-8 max-sm:w-full max-md:w-full max-lg:w-full max-sm:px-6 max-lg:px-8 max-md:px-7 w-1/3"
           >
             <FormField
               control={form.control}
@@ -221,7 +221,7 @@ export default function ProfileForm() {
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
-            className="space-y-8 w-1/3"
+            className="space-y-8 max-sm:w-full max-md:w-full max-lg:w-full max-sm:px-6 max-lg:px-8 max-md:px-7 w-1/3"
           >
             <FormField
               control={form.control}

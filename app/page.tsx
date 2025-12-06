@@ -13,7 +13,7 @@ const page = async () => {
   const recentSessions: any = await getRecentSessions(Infinity);
 
   return (
-    <main className="px-6 pb-7">
+    <main className="px-2 pb-7">
       <section className="px-2">
         <h1 className="text-3xl underline font-bold text-black max-sm:text-center">
           Dashboard
